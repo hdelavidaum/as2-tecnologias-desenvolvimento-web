@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import firebase from "../../Config/Firebase/index.js";
 
 const PageCadastro = () => {
     const navigate = useNavigate()
+    const refDateInput = useRef()
     const [userData, setUserData] = useState({
         name: "",
         lastname: "",
@@ -59,11 +60,21 @@ const PageCadastro = () => {
         <>
             <h1>Cadastro de Usuário</h1>
             <section className="page-register">
-                <input type="text" placeholder="Nome" name="name" value={userData.name} onChange={handleOnChange}/>
-                <input type="text" placeholder="Sobrenome" name="lastname" value={userData.lastname} onChange={handleOnChange}/>
-                <input type="date" placeholder="Data de Nascimento" name="birthdate" value={userData.birthdate} onChange={handleOnChange}/>
-                <input type="email" placeholder="E-mail" name="email" value={userData.email} onChange={handleOnChange}/>
-                <input type="password" placeholder="Senha" name="pwd" value={userData.pwd} onChange={handleOnChange}/>
+                <label htmlFor='userName'>Nome:</label>
+                <input id="userName" type="text" placeholder="Nome" name="name" value={userData.name} onChange={handleOnChange}/>
+                
+                <label htmlFor='userLastname'>Sobrenome:</label>
+                <input id="userLastname" type="text" placeholder="Sobrenome" name="lastname" value={userData.lastname} onChange={handleOnChange}/>
+                
+                <label htmlFor='userBirthdate'>Data de Nascimento:</label>
+                <input id="userBirthdate" type="date" placeholder="Data de Nascimento" name="birthdate" value={userData.birthdate} onChange={handleOnChange}/>
+                
+                <label htmlFor='userEmail'>E-mail:</label>
+                <input id="userEmail" type="email" placeholder="E-mail" name="email" value={userData.email} onChange={handleOnChange}/>
+                
+                <label htmlFor='userPassword'>Senha:</label>
+                <input id="userPassword" type="password" placeholder="Senha" name="pwd" value={userData.pwd} onChange={handleOnChange}/>
+                
                 <button className="btn-register" disabled={isButtonDisabled} onClick={handleOnClick}>Cadastrar</button>
             </section >
         </>

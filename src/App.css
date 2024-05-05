@@ -18,9 +18,17 @@ h1 {
   color: white;
 }
 
+label {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  width: 100%;
+  color: #efefef;
+}
+
 input {
   display: block;
-  margin: 24px 0;
+  margin: 8px 0 32px;
   min-height: 32px;
   font-size: 18px;
   width: clamp(250px, 80%, 350px);
