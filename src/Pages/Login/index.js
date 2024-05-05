@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import firebase from "../../Config/Firebase/index.js";
 
 const PageLogin = () => {
+    const navigate = useNavigate()
     const [loginData, setLoginData] = useState({
         email: "",
         pwd: ""
@@ -8,8 +11,8 @@ const PageLogin = () => {
     const [isButtonDisabled, setButtonDisabled] = useState(true);
 
     useEffect(() => {
-        const items = Object.values(setLoginData)
-        const shouldEnableButton = items.filter(item => !!item && item !== '').length === 5
+        const items = Object.values(loginData)
+        const shouldEnableButton = items.filter(item => !!item && item !== '').length === 2
         
         if (shouldEnableButton) {
             setButtonDisabled(false)
@@ -17,7 +20,9 @@ const PageLogin = () => {
             setButtonDisabled(true)
         }
 
-    }, [setLoginData])
+        console.log(items)
+
+    }, [loginData])
 
 
     
@@ -29,8 +34,17 @@ const PageLogin = () => {
         setLoginData(prevState => ({...prevState, [key]: value}));
     }
 
-    const handleOnClick = (e) => {
+    const handleOnClick = async (e) => {
         e.preventDefault()
+
+        await firebase.auth().signInWithEmailAndPassword(loginData.email, loginData.pwd)
+            .then(res => {
+                console.log(res.data)
+                navigate("/principal");
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 
     return (

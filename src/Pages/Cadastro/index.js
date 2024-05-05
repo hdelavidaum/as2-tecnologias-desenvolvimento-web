@@ -33,17 +33,18 @@ const PageCadastro = () => {
 
     const handleOnClick = async (e) => {
         e.preventDefault();
+        setButtonDisabled(true)
         
         try {
-            setButtonDisabled(true)
-            await firebase.firestore().collection("user").add({
-                name: userData.name,
-                lastname: userData.lastname,
-                birthdate: userData.birthdate,
-                email: userData.email,
-                pwd: userData.pwd
-                
-            });
+                await firebase.auth().createUserWithEmailAndPassword(userData.email, userData.pwd)
+                    .then(async res => {
+                            await firebase.firestore().collection("user").doc(res.user.uid).set({
+                                name: userData.name,
+                                lastname: userData.lastname,
+                                birthdate: userData.birthdate,
+                                email: userData.email
+                            })
+                    });
         } catch (error) {
             console.error(error)
         } finally {
