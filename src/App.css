@@ -49,7 +49,6 @@ dialog::backdrop {
 .page-login,
 .page-principal {
   height: 100%;
-  
   display:flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -58,6 +57,7 @@ dialog::backdrop {
 
 .page-principal p {
   font-size: 18px;
+  color: #efefef;
 }
 
 .btn-register,

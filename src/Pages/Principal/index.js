@@ -39,7 +39,7 @@ const PagePrincipal = () => {
 
     const handleOnClick = async (e) => {
         e.preventDefault()
-        firebase.auth().signOut().then(() => navigate("/login"))
+        firebase.auth().signOut().then(() => navigate("/"))
     }
 
     const handleOnClickDialog = (e) => {
