@@ -36,3 +36,39 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* --------- */
+h1 {
+  text-align: center;
+}
+
+input {
+  display: block;
+  margin: 24px 0;
+  min-height: 32px;
+  font-size: 18px;
+  width: clamp(250px, 80%, 350px);
+}
+
+.page-register,
+.page-login {
+  height: 100%;
+  
+  display:flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-register,
+.btn-login {
+  height: 32px;
+  width: clamp(250px, 80%, 350px);
+  font-size: 18px;
+}
+
+.btn-register:disabled,
+.btn-login:disabled {
+  cursor: not-allowed;
+}
