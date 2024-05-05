@@ -19,9 +19,6 @@ const PageLogin = () => {
         } else {
             setButtonDisabled(true)
         }
-
-        console.log(items)
-
     }, [loginData])
 
 

@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import firebase from "../../Config/Firebase/index.js";
 
 const PageCadastro = () => {
+    const navigate = useNavigate()
     const [userData, setUserData] = useState({
         name: "",
         lastname: "",
@@ -45,6 +47,7 @@ const PageCadastro = () => {
                                 email: userData.email
                             })
                     });
+                navigate("/principal")
         } catch (error) {
             console.error(error)
         } finally {
